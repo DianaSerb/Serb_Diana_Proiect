@@ -1,0 +1,70 @@
+﻿@page "/{id:int?}"
+@model Serb_Diana_Proiect.Pages.Cars.IndexModel
+
+@{
+    ViewData["Title"] = "Automobile";
+}
+
+<h1>Automobile</h1>
+
+<p>
+    <a asp-page="Create">Adaugă</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Car[0].Marca)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Car[0].Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Car[0].Pret)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Car[0].Motor.TipMotor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Car[0].CategoriiMasina)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.CarD.Cars) {
+    string selectedRow = "";
+    if (item.ID == Model.CarID) 
+    { 
+        selectedRow = "table-success";
+    }
+
+        <tr class="@selectedRow">
+            <td>
+                @Html.DisplayFor(modelItem => item.Marca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pret)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Motor.TipMotor)
+            </td>
+            <td>
+                @{ 
+                    foreach (var category in item.CategoriiMasina)
+                    { 
+                        @category.Categorie.NumeCategorie <br/> 
+                } 
+                    } 
+            </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.ID">Editeaza</a> |
+                    <a asp-page="./Details" asp-route-id="@item.ID">Detalii</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Stergere</a>
+                </td>
+            </tr>
+}
+    </tbody>
+</table>

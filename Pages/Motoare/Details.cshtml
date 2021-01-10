@@ -1,0 +1,25 @@
+﻿@page
+@model Serb_Diana_Proiect.Pages.Motoare.DetailsModel
+
+@{
+    ViewData["Title"] = "Detalii";
+}
+
+<h1>Detalii</h1>
+
+<div>
+    <h4>Motor</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Motor.TipMotor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Motor.TipMotor)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Motor.ID">Editeaza</a> |
+    <a asp-page="./Index">Inapoi la lista</a>
+</div>

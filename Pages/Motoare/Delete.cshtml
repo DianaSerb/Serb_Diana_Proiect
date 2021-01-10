@@ -1,0 +1,28 @@
+﻿@page
+@model Serb_Diana_Proiect.Pages.Motoare.DeleteModel
+
+@{
+    ViewData["Title"] = "Stergere";
+}
+
+<h1>Stergere</h1>
+
+<h3>Esti sigur ca vrei sa stergi?</h3>
+<div>
+    <h4>Motor</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Motor.TipMotor)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Motor.TipMotor)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Motor.ID" />
+        <input type="submit" value="Sterge" class="btn btn-danger" /> |
+        <a asp-page="./Index">Inapoi la lista</a>
+    </form>
+</div>
